@@ -2,7 +2,9 @@
 // import { auth, googleProvide } from "../utils/firebase"
 // import api from "../utils/axios"
 
+import { useEffect } from "react"
 import Home from "./pages/Home"
+import getCurrentUser from "./features/getCurrentUser"
 
 
 function App() {
@@ -21,6 +23,13 @@ function App() {
   //    await handleLOgin(token)
   //    console.log(data)
   // }
+
+  useEffect(()=>{
+    const getUser=async()=>{
+      await getCurrentUser()
+    }
+    getUser()
+  },[])
 
   return (
     // <div className="w-full h-screen bg-black  flex items-center justify-center">
