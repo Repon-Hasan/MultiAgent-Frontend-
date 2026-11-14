@@ -5,6 +5,8 @@
 import { useEffect } from "react"
 import Home from "./pages/Home"
 import getCurrentUser from "./features/getCurrentUser"
+import { useDispatch } from "react-redux"
+import { setUserdata } from "./redux/userSlice"
 
 
 function App() {
@@ -23,10 +25,11 @@ function App() {
   //    await handleLOgin(token)
   //    console.log(data)
   // }
-
+const dispatch=useDispatch()
   useEffect(()=>{
     const getUser=async()=>{
-      await getCurrentUser()
+      const data=await getCurrentUser()
+      dispatch(setUserdata(data))
     }
     getUser()
   },[])
